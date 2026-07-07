@@ -1,6 +1,6 @@
 ---
 name: blitz-copy
-description: When the user wants high-converting copy for landing pages, headlines, cold emails, X/LinkedIn posts, video intros, or SEO titles. Also use when the user mentions "blitz copy", "dopamine copywriting", hooks, or asks to rewrite flat copy that explains instead of sells.
+description: When the user wants high-converting copy for landing pages, headlines, cold emails, X/LinkedIn posts, video intros, or SEO titles — and already knows their audience. Also use when the user mentions "blitz copy", "dopamine copywriting", hooks, or asks to rewrite flat copy that explains instead of sells. For audience research first, use the understand-customers skill.
 metadata:
   version: 1.0.0
   author: illyism
@@ -23,28 +23,11 @@ Your copy must interrupt, ignite, and provoke in seconds. The reader should thin
 
 If the copy explains features before triggering a feeling, rewrite it.
 
-## Initial Assessment: The Empathy Engine
+## Initial Assessment
 
-Blitz Copy only works if you know the target cold. **Check for project context first:** if `.cursor/project-context.md` or `.claude/project-context.md` exists, read it for product, audience, and positioning. Otherwise, ask the user or infer from the given context:
+Blitz Copy only works if you know the target cold. **If audience research hasn't been done yet**, use the [understand-customers](https://il.ly/skills/understand-customers) skill first — it walks through the Nightmare Scenario, Magic Wand Outcome, inner monologue, and language bank.
 
-1. **Core Identity & Role**
-   - Who are they _really_ (e.g. "ambitious SaaS founder", "overwhelmed marketing manager", "freelancer struggling to scale")?
-   - What's their primary goal related to the problem the product solves?
-
-2. **Deepest Pains & Frustrations (The "Nightmare Scenario")**
-   - What is their most visceral frustration with this problem, in _their own words_?
-   - What inner monologue is driving them?
-   - What have they tried before that failed or disappointed them? Why?
-   - What are the emotional consequences (feeling stuck, wasting money, falling behind competitors, imposter syndrome)?
-
-3. **Unspoken Desires & Aspirations (The "Magic Wand" Outcome)**
-   - The ultimate, almost "too good to be true" outcome they dream of?
-   - Beyond the functional benefit, what does it _mean_ emotionally or in status terms (market leader, peace of mind, industry recognition, freedom)?
-   - What would feel like a "cheat code" or unfair advantage?
-
-4. **Language & Worldview**
-   - What jargon, tools, or influencers are part of their world?
-   - What core belief can the copy affirm or satisfyingly challenge?
+**Check for project context:** if `.cursor/project-context.md` or `.claude/project-context.md` exists, read it for product, audience, and positioning. Otherwise, ask the user or infer from the given context before writing.
 
 ## The Formula: Hook → Spike → Payoff
 
