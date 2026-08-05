@@ -5,7 +5,7 @@
   "brand": {
     "promptPrefix": "YourBrand: [palette description]. Match attached app icon style.",
     "paddingColor": [10, 10, 15],
-    "paddingPercent": 0.1
+    "paddingPercent": 0
   },
   "concepts": [
     {
@@ -27,11 +27,11 @@
       { "file": "promo-marquee-1400x560.jpg", "w": 1400, "h": 560, "ratio": "21:9", "prompt": "Wide marquee. Headline left, hero visual right." }
     ],
     "screenshots": [
-      { "file": "screenshot-01-hero-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 1 — hero value prop. NOT a literal screenshot." },
-      { "file": "screenshot-02-how-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 2 — 3-step how it works. NOT a literal screenshot." },
-      { "file": "screenshot-03-benefit-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 3 — key benefit before/after. NOT a literal screenshot." },
-      { "file": "screenshot-04-feature-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 4 — feature depth. NOT a literal screenshot." },
-      { "file": "screenshot-05-compare-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 5 — comparison or formats. NOT a literal screenshot." }
+      { "file": "screenshot-01-hero-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "[prefix]. Linen background to all edges. Product wordmark + serif headline top. Three benefit columns below filling frame width — side-by-side rates, night-by-night calendar, split-stay planner — each with icon circle and short copy. Optional edge props (cup, plant shadow) bleeding off sides. NOT a small centered island." },
+      { "file": "screenshot-02-how-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "[prefix]. Cream background to all edges. 3-step horizontal flow filling frame: (1) enter codes card, (2) scan results card, (3) ranked results card — connected by arrows. Burgundy footer bar touching bottom edge. Multi-column layout, not centered float." },
+      { "file": "screenshot-03-benefit-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "[prefix]. Headline left + copy right. Two contrasting cards center: gray Standard vs maroon MMP with savings badge. Night-by-night grid data. Three icon columns bottom." },
+      { "file": "screenshot-04-feature-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "[prefix]. Red fabric off left edge. Three columns: value prop | planner widget with calendar + rate blocks | tier comparison card with savings footer. Burgundy footer bar at bottom." },
+      { "file": "screenshot-05-compare-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "[prefix]. Watermark sketches off left/right edges. Two card tables: cash vs points with sample hotels. Sort pills + export callout. Bottom tagline banner." }
     ]
   }
 }

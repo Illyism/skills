@@ -11,8 +11,10 @@
 
 | Asset | Size | Generate ratio | Resize |
 |-------|------|----------------|--------|
-| Screenshot | **1280×800** or 640×400 | 16:9 | inside + pad → exact |
-| Screenshot (alt) | 640×400 | 16:9 | inside + pad → exact |
+| Screenshot | **1280×800** or 640×400 | 16:9 | cover → exact (full bleed) |
+| Screenshot (alt) | 640×400 | 16:9 | cover → exact (full bleed) |
+
+**Composition:** background fills all edges; content uses multi-column layout with concrete UI widgets and sample data. See [prompts.md](prompts.md) per-slide templates. Quality reference: `public/mmp-store-assets/store/screenshot-03`–`05`.
 
 640×400 = half of 1280×800. Batch-resize with sharp if needed.
 

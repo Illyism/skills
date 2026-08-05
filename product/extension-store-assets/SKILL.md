@@ -1,10 +1,6 @@
 ---
 name: extension-store-assets
-description: Generates browser extension brand icons, Chrome Web Store promo tiles, promotional screenshots, brand guides, and listing copy. Uses OpenRouter gpt-image-2. Use when creating extension branding, Chrome Web Store assets, app icon concepts, store descriptions, or /extension-store-assets workflows.
-metadata:
-  version: 1.0.0
-  author: illyism
-  source: https://il.ly/skills/extension-store-assets
+description: Generates browser extension brand icons, Chrome Web Store promo tiles, promotional screenshots, brand guides, and listing copy. Uses OpenRouter gpt-image-2 via lib/blog-image-generator. Use when creating extension branding, Chrome Web Store assets, app icon concepts, store descriptions, or /extension-store-assets workflows.
 disable-model-invocation: true
 ---
 
@@ -26,33 +22,21 @@ Do **not** skip phase 1. Do **not** generate literal UI screenshots for store sl
 
 1. Copy [brand.config.example.json](brand.config.example.json) → `{outputDir}/brand.config.json`
 2. Fill in product name, brand prompt prefix, colors, concept prompts, store slide prompts
-3. Run from repo root with `OPENROUTER_API_KEY` in env
+3. Run from repo root with env loaded
 
 ## Commands
 
 ```bash
-set -a && source .env && set +a
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=concepts
 
-# Phase 1 — concept icons
-bun skills/product/extension-store-assets/scripts/generate.ts \
-  --config=public/_static/my-extension/brand.config.json --phase=concepts
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=brand-guide
 
-# Phase 2 — brand guide (after picking iconFile in config)
-bun skills/product/extension-store-assets/scripts/generate.ts \
-  --config=public/_static/my-extension/brand.config.json --phase=brand-guide
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=store
 
-# Phase 3 — promo tiles + store slides + listing copy
-bun skills/product/extension-store-assets/scripts/generate.ts \
-  --config=public/_static/my-extension/brand.config.json --phase=store
-
-# Regenerate slides or promos only
-bun skills/product/extension-store-assets/scripts/generate.ts \
-  --config=public/_static/my-extension/brand.config.json --phase=store --screenshots-only
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=store --screenshots-only
 ```
 
 After phase 1, user picks a concept → set `iconFile` in config to that filename → delete other concepts → run phase 2 and 3.
-
-When installed via `npx skills add Illyism/skills --skill extension-store-assets`, adjust the script path to your install location (often `.cursor/skills/extension-store-assets/scripts/generate.ts`).
 
 ## Store asset rules
 
@@ -60,13 +44,24 @@ See [sizes.md](sizes.md) for exact dimensions.
 
 **Promo tiles** — generate at closest aspect ratio, `fit: cover` to exact size.
 
-**Store screenshots (1280×800)** — promotional benefit slides, NOT fake browser/extension UI mocks. Generate at 16:9, scale with `fit: inside` to ~80% of canvas, center on brand background color (default 10% padding). Prevents edge cropping.
+**Store screenshots (1280×800)** — promotional benefit slides, NOT fake browser/extension UI mocks. Generate at 16:9, scale with `fit: cover` to exact size (full bleed). Set `paddingPercent: 0` in config (default).
+
+**What makes slides look store-ready** (see `public/mmp-store-assets/store/screenshot-03`–`05`):
+
+- Background color/texture fills all four edges — no letterbox margin
+- Decorative elements (fabric, watermarks, footer bars) bleed off canvas edges
+- Content uses **multi-column editorial layout** that fills the frame — not a small centered island
+- **Concrete UI widgets with sample data** (prices, dates, hotel names) — not abstract icon rows alone
+- Contrasting card pairs (gray vs red, cash vs points) with savings badges
+- Bottom footer bar or three-icon feature row anchors the composition
+
+See [prompts.md](prompts.md) for per-slide composition templates.
 
 **Listing copy** — write `store/product-details.md` using [product-details-template.md](product-details-template.md). Short description ≤132 chars.
 
 ## Prompt patterns
 
-See [prompts.md](prompts.md) for phase templates **and prompt tips** (4-block structure, negatives, iteration).
+See [prompts.md](prompts.md).
 
 **Concept icons:** distinct visual worlds — not literal clipboard/marquee dev-tool clichés unless requested. Fun, beautiful, readable at 16px.
 
@@ -79,23 +74,23 @@ See [prompts.md](prompts.md) for phase templates **and prompt tips** (4-block st
 - Edit `lib/blog-image-generator/generate.ts`
 - Use blog `_references/` style refs (raw prompts only)
 - Generate literal screenshots for Chrome store slides
-- Crop with `fit: cover` on 1280×800 slides (use padding)
+- Letterbox 1280×800 slides unless `paddingPercent > 0` is explicitly set
+- Center small content on a large empty background — use multi-column layouts that fill the frame
+- Abstract icon-only slides with no sample data or UI widgets
 - Skip visual review before shipping
 
 ## Paths
 
 | Item | Path |
 |------|------|
-| Generator script | `product/extension-store-assets/scripts/generate.ts` |
-| Example config | `product/extension-store-assets/brand.config.example.json` |
-| Size reference | `product/extension-store-assets/sizes.md` |
-| Copy template | `product/extension-store-assets/product-details-template.md` |
-| Prompt patterns | `product/extension-store-assets/prompts.md` |
-| Peel UI example | `public/_static/copy-ui-icons/brand.config.json` |
-| MMP example | `public/_static/mmp-store-assets/brand.config.json` |
+| Generator script | `.cursor/skills/extension-store-assets/scripts/generate.ts` |
+| Example config | `.cursor/skills/extension-store-assets/brand.config.example.json` |
+| Size reference | `.cursor/skills/extension-store-assets/sizes.md` |
+| Copy template | `.cursor/skills/extension-store-assets/product-details-template.md` |
+| Prompt patterns | `.cursor/skills/extension-store-assets/prompts.md` |
+| Peel UI example | `public/copy-ui-icons/brand.config.json` |
+| MMP Rate Compare example | `public/mmp-store-assets/brand.config.json` |
 
-## Worked examples
+## MMP Rate Compare reference
 
-**Peel UI** (`public/_static/copy-ui-icons/`) — dev tool, neon magenta + cyan, sticker-peel metaphor. [Chrome Web Store listing](https://chromewebstore.google.com/) (pending).
-
-**Marriott MMP Rate Compare** (`public/_static/mmp-store-assets/`) — hospitality palette, calendar + rate comparison metaphor. [Live on Chrome Web Store](https://chromewebstore.google.com/detail/marriott-mmp-rate-compare/dcddpmkodggbfokgblhapcacabkghoof).
+Worked example in `public/mmp-store-assets/` — Marriott-inspired hospitality palette, calendar-grid icon, unofficial (no Marriott logo). Quality bar for store slides: `store/screenshot-03-benefit`, `screenshot-04-feature`, `screenshot-05-compare`.

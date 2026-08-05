@@ -2,7 +2,7 @@
  * Extension store asset generator.
  *
  * Usage:
- *   bun skills/product/extension-store-assets/scripts/generate.ts --config=path/to/brand.config.json --phase=concepts
+ *   bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=path/to/brand.config.json --phase=concepts
  *   bun ... --phase=brand-guide
  *   bun ... --phase=store [--screenshots-only|--promo-only]
  */
@@ -193,9 +193,15 @@ async function runStore(
 
   if (!opts.promoOnly && config.store?.screenshots) {
     for (const s of config.store.screenshots) {
-      process.stdout.write(`Slide ${s.file} (${s.w}×${s.h}, padded)…\n`)
+      const mode = paddingPercent > 0 ? 'padded' : 'full bleed'
+      process.stdout.write(`Slide ${s.file} (${s.w}×${s.h}, ${mode})…\n`)
       const result = await generateImage(`${promptPrefix} ${s.prompt}`, s.ratio, ref)
-      await resizeWithPadding(result.bytes, s.w, s.h, path.join(storeDir, s.file), paddingColor, paddingPercent)
+      const outPath = path.join(storeDir, s.file)
+      if (paddingPercent > 0) {
+        await resizeWithPadding(result.bytes, s.w, s.h, outPath, paddingColor, paddingPercent)
+      } else {
+        await resizeCover(result.bytes, s.w, s.h, outPath)
+      }
       process.stdout.write(`✅ ${s.file}\n`)
     }
   }

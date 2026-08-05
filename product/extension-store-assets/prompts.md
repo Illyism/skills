@@ -31,99 +31,51 @@ icon at 128px + 24px toolbar glyph, brand voice tags. Figma brand board — no p
 
 ## Phase 3 — store slides (1280×800)
 
-Always prefix with:
+### Full-bleed prefix (every slide)
 
 ```
 Promotional marketing slide for Chrome Web Store — concept illustration explaining a benefit.
 NOT a literal app screenshot, browser window, or extension popup mockup.
-Clean centered composition with generous empty margins; no text or graphics touching edges.
+Full-bleed edge-to-edge composition filling the entire 16:9 frame — background color/texture extends to all four edges.
+Multi-column editorial layout that fills the frame width — NOT a small centered island on empty background.
+Concrete UI widgets with realistic sample data (prices, dates, names) — not abstract icon rows alone.
+Keep headlines and key UI cards inset ~5% from edges; decorative elements (fabric, watermarks, footer bars) may bleed off edges.
 ```
-
-| Slide | Focus |
-|-------|-------|
-| 1 | Hero value prop + 3 benefit icons |
-| 2 | How it works (3-step infographic) |
-| 3 | Problem/benefit (before vs after concept) |
-| 4 | Key feature depth (output format, speed, etc.) |
-| 5 | Comparison or formats (two cards side by side) |
 
 Append brand prompt prefix + match attached icon style for slides 1–5.
 
----
+### Per-slide composition (quality bar: MMP screenshot-03/04/05)
 
-## Prompt tips
+| Slide | Layout | Must include |
+|-------|--------|--------------|
+| **1 Hero** | Headline top + 3 benefit columns below | Product wordmark, serif headline, three icon columns with short copy — fill vertical space; optional edge props (cup, plant shadow) bleeding off sides |
+| **2 How it works** | 3-step horizontal flow + bottom footer bar | Numbered step cards connected by arrows/dots; burgundy footer bar **touching bottom edge**; optional plant/trophy props |
+| **3 Benefit** | Headline left + copy right \| two contrasting cards center \| 3 icons bottom | Gray "before" card vs red "after" card with **savings badge** overlapping corner; night-by-night data strip; connector between cards |
+| **4 Feature depth** | 3 columns: value prop \| UI widget \| comparison card | Left: headline + bullet features. Center: **concrete planner widget** (calendar row, rate blocks, recommendation callout). Right: tier comparison card with VS and savings footer. Red fabric or texture **bleeding off left edge**; burgundy footer bar at bottom |
+| **5 Compare/formats** | Headline top + two card tables + controls row + bottom banner | Side-by-side cards with contrasting headers (cash vs points); sample hotel rows with real-looking prices; sort pill buttons; export callout; watermark sketches **bleeding off left/right edges** |
 
-### 4-block structure
+### Slide prompt examples
 
-Every prompt should hit these in order:
-
-1. **Format** — "Square 1:1 app icon" / "Promotional marketing slide 16:9"
-2. **Brand anchor** — palette with hex + one metaphor ("sticker peel", "glass lozenge")
-3. **Hero content** — one focal object, one headline idea, max 3 supporting elements
-4. **Avoid** — "NOT a browser screenshot", "no text touching edges", "no clipboard cliché"
-
-### Sell the benefit, not the UI
-
-| Bad | Good |
-|-----|------|
-| "Extension popup with Tailwind toggle and Plain CSS card" | "Slide 3 — Stop rebuilding from screenshots. Grey sad screenshot vs glowing peeled button with class pills" |
-| "Marquee selection + clipboard + copy arrow" | "Peel sticker revealing `</>` underneath" |
-
-One slide = one idea. Don't combine hero + picker + code panel + export in one image.
-
-### Negative prompts matter
-
-Models default to generic SaaS purple + clipboard icons. Always ban what you don't want:
-
+**Slide 3 — benefit:**
 ```
-NOT a literal app screenshot, browser window, or extension popup mockup.
-NOT purple dev-tool clipboard cliché unless requested.
-No text or graphics touching edges.
+[prefix]. Linen texture background to all edges. Headline left "See the difference" + supporting copy right with vertical divider. Two rate comparison cards center: gray Standard ($1,523 total, 7-night grid) vs maroon MMP ($963, savings badge "YOU SAVE $560"). Three icon columns bottom — savings, clarity, trust.
 ```
 
-### Palette
-
-- **3 colors max** with hex: primary, accent, background
-- One **material word**: "glossy 3D sticker", "matte washi paper", "iridescent glass"
-- Once picked, reuse the **same palette string** in every phase-2/3 prompt
-
-### Reference images
-
-| Phase | Reference? |
-|-------|------------|
-| Concepts | No — want divergence |
-| Brand guide + store | Yes — pass picked icon as `input_reference` |
-| Wording | "Match attached app icon style" — don't re-describe the whole icon |
-
-### Size-aware prompting
-
-| Asset | Optimize for |
-|-------|--------------|
-| 440×280 small promo | Bold wordmark + one icon, readable at thumbnail |
-| 1400×560 marquee | Wide layout: headline left, visual right |
-| 1280×800 slides | Poster / infographic / comparison — not dense UI |
-
-Script adds 10% padding on slides — still ask for margins in the prompt.
-
-### Text in images
-
-- **Short labels only** — "Tailwind v4", "Picker on", "3 steps"
-- Avoid paragraphs; models mangle long copy
-- Exact text needed? Overlay in Figma after generation
-
-### Iteration
-
-1. Generate **4–6 wild concepts** (unrelated directions)
-2. Pick one → delete losers → **lock palette + metaphor**
-3. Regenerate weak slides **one at a time** — batch of 5 often has 1–2 misses
-4. Tweak **one variable** per retry (headline, layout, or color — not all three)
-
-### Store slide template
-
+**Slide 4 — feature:**
 ```
-Promotional Chrome Web Store slide. NOT a literal screenshot.
-[Brand]: neon magenta #FF2D8A, cyan #00E5FF, charcoal #0A0A0F, sticker-peel style.
-Slide [N] — [one benefit]. [Visual: 2–3 elements max].
-Centered composition, wide margins, no edge cropping.
-Match attached app icon style.
+[prefix]. Red fabric drapes off left edge, cream texture fills frame. Three columns: left value prop + feature bullets, center split-stay planner widget (calendar row, corp/standard night blocks, recommendation box), right tier comparison card (MMF vs MMP split, savings footer). Testimonial quote + burgundy footer bar touching bottom edge.
 ```
+
+**Slide 5 — compare:**
+```
+[prefix]. Cream background with hotel sketch watermarks bleeding off left/right edges. Headline "See every option" top. Two card tables: Cash rates (sample hotels + $ prices) vs Bonvoy points (CPP values). Sort pill row below. Export-to-Markdown callout. Bottom tagline banner.
+```
+
+### Regenerate one slide
+
+```bash
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts \
+  --config=public/mmp-store-assets/brand.config.json --phase=store --screenshots-only
+```
+
+Edit individual slide prompts in `brand.config.json` before re-running.
