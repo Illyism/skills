@@ -27,13 +27,13 @@ Do **not** skip phase 1. Do **not** generate literal UI screenshots for store sl
 ## Commands
 
 ```bash
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=concepts
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/peel-ui/brand.config.json --phase=concepts
 
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=brand-guide
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/peel-ui/brand.config.json --phase=brand-guide
 
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=store
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/peel-ui/brand.config.json --phase=store
 
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=store --screenshots-only
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/peel-ui/brand.config.json --phase=store --screenshots-only
 ```
 
 After phase 1, user picks a concept → set `iconFile` in config to that filename → delete other concepts → run phase 2 and 3.
@@ -46,7 +46,7 @@ See [sizes.md](sizes.md) for exact dimensions.
 
 **Store screenshots (1280×800)** — promotional benefit slides, NOT fake browser/extension UI mocks. Generate at 16:9, scale with `fit: cover` to exact size (full bleed). Set `paddingPercent: 0` in config (default).
 
-**What makes slides look store-ready** (see `public/_static/copy-ui-icons/store/`):
+**What makes slides look store-ready** (see `public/_static/peel-ui/store/`):
 
 - Background color/texture fills all four edges — no letterbox margin
 - Decorative elements (glows, class pills, footer bars) bleed off canvas edges
@@ -88,8 +88,8 @@ See [prompts.md](prompts.md).
 | Size reference | `.cursor/skills/extension-store-assets/sizes.md` |
 | Copy template | `.cursor/skills/extension-store-assets/product-details-template.md` |
 | Prompt patterns | `.cursor/skills/extension-store-assets/prompts.md` |
-| Peel UI example | `public/_static/copy-ui-icons/brand.config.json` |
+| Peel UI example | `public/_static/peel-ui/brand.config.json` |
 
 ## Peel UI reference
 
-Worked example in `public/_static/copy-ui-icons/` — neon magenta + cyan, sticker-peel metaphor. Store slides: `store/screenshot-01-hero` through `screenshot-05-formats`.
+Worked example in `public/_static/peel-ui/` — neon magenta + cyan, sticker-peel metaphor. Store slides: `store/screenshot-01-hero` through `screenshot-05-formats`.

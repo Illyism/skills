@@ -75,7 +75,7 @@ Append brand prompt prefix + match attached icon style for slides 1–5.
 
 ```bash
 set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts \
-  --config=public/_static/copy-ui-icons/brand.config.json --phase=store --screenshots-only
+  --config=public/_static/peel-ui/brand.config.json --phase=store --screenshots-only
 ```
 
 Edit individual slide prompts in `brand.config.json` before re-running.
