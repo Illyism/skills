@@ -1,6 +1,6 @@
 # Skills by Ilias Ism
 
-Open-source agent skills for marketing, SEO, and copywriting. Markdown skills that work with Cursor, Claude Code, ChatGPT, and any AI that reads markdown.
+Open-source agent skills for marketing, SEO, copywriting, and product workflows. Markdown skills that work with Cursor, Claude Code, ChatGPT, and any AI that reads markdown.
 
 Browse them at [il.ly/skills](https://il.ly/skills).
 
@@ -19,10 +19,13 @@ npx skills add Illyism/skills --list
 
 ## Skills
 
-| Skill                                         | Category    | Description                                                               |
-| --------------------------------------------- | ----------- | ------------------------------------------------------------------------- |
-| [blitz-copy](copywriting/blitz-copy/SKILL.md) | Copywriting | High-converting copy using dopamine psychology: Hook → Spike → Payoff     |
-| [blitz-seo](seo/blitz-seo/SKILL.md)           | SEO         | A focused 30-day sprint to rank one high-value page for one money keyword |
+| Skill | Category | Description |
+| ----- | -------- | ----------- |
+| [blitz-copy](copywriting/blitz-copy/SKILL.md) | Copywriting | High-converting copy using dopamine psychology: Hook → Spike → Payoff |
+| [understand-customers](copywriting/understand-customers/SKILL.md) | Copywriting | Research and synthesize customer language before writing copy |
+| [blitz-seo](seo/blitz-seo/SKILL.md) | SEO | A focused 30-day sprint to rank one high-value page for one money keyword |
+| [eval](code/eval/SKILL.md) | Code | Minimal 1-file AI evals for prompts, models, and production functions |
+| [extension-store-assets](product/extension-store-assets/SKILL.md) | Product | Chrome extension icons, store promo tiles, benefit slides, and listing copy |
 
 ## Structure
 

@@ -1,0 +1,37 @@
+{
+  "productName": "Your Extension",
+  "outputDir": "public/your-extension-assets",
+  "iconFile": "app-icon.jpg",
+  "brand": {
+    "promptPrefix": "YourBrand: [palette description]. Match attached app icon style.",
+    "paddingColor": [10, 10, 15],
+    "paddingPercent": 0.1
+  },
+  "concepts": [
+    {
+      "file": "concept-a.jpg",
+      "prompt": "Square 1:1 app icon, rounded corners. [Direction A: palette + metaphor]. No text."
+    },
+    {
+      "file": "concept-b.jpg",
+      "prompt": "Square 1:1 app icon, rounded corners. [Direction B: different visual world]. No text."
+    }
+  ],
+  "brandGuide": {
+    "file": "brand-guide.jpg",
+    "prompt": "Brand guide cheat sheet poster. Palette swatches, typography, UI mocks, icon usage. Figma brand board — no people."
+  },
+  "store": {
+    "promo": [
+      { "file": "promo-small-440x280.jpg", "w": 440, "h": 280, "ratio": "3:2", "prompt": "Small promo tile. Wordmark + hero visual + tagline." },
+      { "file": "promo-marquee-1400x560.jpg", "w": 1400, "h": 560, "ratio": "21:9", "prompt": "Wide marquee. Headline left, hero visual right." }
+    ],
+    "screenshots": [
+      { "file": "screenshot-01-hero-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 1 — hero value prop. NOT a literal screenshot." },
+      { "file": "screenshot-02-how-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 2 — 3-step how it works. NOT a literal screenshot." },
+      { "file": "screenshot-03-benefit-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 3 — key benefit before/after. NOT a literal screenshot." },
+      { "file": "screenshot-04-feature-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 4 — feature depth. NOT a literal screenshot." },
+      { "file": "screenshot-05-compare-1280x800.jpg", "w": 1280, "h": 800, "ratio": "16:9", "prompt": "Promo slide 5 — comparison or formats. NOT a literal screenshot." }
+    ]
+  }
+}
