@@ -27,13 +27,13 @@ Do **not** skip phase 1. Do **not** generate literal UI screenshots for store sl
 ## Commands
 
 ```bash
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=concepts
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=concepts
 
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=brand-guide
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=brand-guide
 
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=store
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=store
 
-set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/copy-ui-icons/brand.config.json --phase=store --screenshots-only
+set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts --config=public/_static/copy-ui-icons/brand.config.json --phase=store --screenshots-only
 ```
 
 After phase 1, user picks a concept → set `iconFile` in config to that filename → delete other concepts → run phase 2 and 3.
@@ -46,13 +46,13 @@ See [sizes.md](sizes.md) for exact dimensions.
 
 **Store screenshots (1280×800)** — promotional benefit slides, NOT fake browser/extension UI mocks. Generate at 16:9, scale with `fit: cover` to exact size (full bleed). Set `paddingPercent: 0` in config (default).
 
-**What makes slides look store-ready** (see `public/mmp-store-assets/store/screenshot-03`–`05`):
+**What makes slides look store-ready** (see `public/_static/copy-ui-icons/store/`):
 
 - Background color/texture fills all four edges — no letterbox margin
-- Decorative elements (fabric, watermarks, footer bars) bleed off canvas edges
+- Decorative elements (glows, class pills, footer bars) bleed off canvas edges
 - Content uses **multi-column editorial layout** that fills the frame — not a small centered island
-- **Concrete UI widgets with sample data** (prices, dates, hotel names) — not abstract icon rows alone
-- Contrasting card pairs (gray vs red, cash vs points) with savings badges
+- **Concrete UI widgets with sample data** (class names, code snippets, button states) — not abstract icon rows alone
+- Contrasting card pairs (before vs after, format A vs format B)
 - Bottom footer bar or three-icon feature row anchors the composition
 
 See [prompts.md](prompts.md) for per-slide composition templates.
@@ -88,9 +88,8 @@ See [prompts.md](prompts.md).
 | Size reference | `.cursor/skills/extension-store-assets/sizes.md` |
 | Copy template | `.cursor/skills/extension-store-assets/product-details-template.md` |
 | Prompt patterns | `.cursor/skills/extension-store-assets/prompts.md` |
-| Peel UI example | `public/copy-ui-icons/brand.config.json` |
-| MMP Rate Compare example | `public/mmp-store-assets/brand.config.json` |
+| Peel UI example | `public/_static/copy-ui-icons/brand.config.json` |
 
-## MMP Rate Compare reference
+## Peel UI reference
 
-Worked example in `public/mmp-store-assets/` — Marriott-inspired hospitality palette, calendar-grid icon, unofficial (no Marriott logo). Quality bar for store slides: `store/screenshot-03-benefit`, `screenshot-04-feature`, `screenshot-05-compare`.
+Worked example in `public/_static/copy-ui-icons/` — neon magenta + cyan, sticker-peel metaphor. Store slides: `store/screenshot-01-hero` through `screenshot-05-formats`.

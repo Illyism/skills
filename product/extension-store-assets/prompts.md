@@ -38,44 +38,44 @@ Promotional marketing slide for Chrome Web Store — concept illustration explai
 NOT a literal app screenshot, browser window, or extension popup mockup.
 Full-bleed edge-to-edge composition filling the entire 16:9 frame — background color/texture extends to all four edges.
 Multi-column editorial layout that fills the frame width — NOT a small centered island on empty background.
-Concrete UI widgets with realistic sample data (prices, dates, names) — not abstract icon rows alone.
-Keep headlines and key UI cards inset ~5% from edges; decorative elements (fabric, watermarks, footer bars) may bleed off edges.
+Concrete UI widgets with realistic sample data (class names, code snippets, button labels) — not abstract icon rows alone.
+Keep headlines and key UI cards inset ~5% from edges; decorative elements (glows, class pills, footer bars) may bleed off edges.
 ```
 
 Append brand prompt prefix + match attached icon style for slides 1–5.
 
-### Per-slide composition (quality bar: MMP screenshot-03/04/05)
+### Per-slide composition
 
 | Slide | Layout | Must include |
 |-------|--------|--------------|
-| **1 Hero** | Headline top + 3 benefit columns below | Product wordmark, serif headline, three icon columns with short copy — fill vertical space; optional edge props (cup, plant shadow) bleeding off sides |
-| **2 How it works** | 3-step horizontal flow + bottom footer bar | Numbered step cards connected by arrows/dots; burgundy footer bar **touching bottom edge**; optional plant/trophy props |
-| **3 Benefit** | Headline left + copy right \| two contrasting cards center \| 3 icons bottom | Gray "before" card vs red "after" card with **savings badge** overlapping corner; night-by-night data strip; connector between cards |
-| **4 Feature depth** | 3 columns: value prop \| UI widget \| comparison card | Left: headline + bullet features. Center: **concrete planner widget** (calendar row, rate blocks, recommendation callout). Right: tier comparison card with VS and savings footer. Red fabric or texture **bleeding off left edge**; burgundy footer bar at bottom |
-| **5 Compare/formats** | Headline top + two card tables + controls row + bottom banner | Side-by-side cards with contrasting headers (cash vs points); sample hotel rows with real-looking prices; sort pill buttons; export callout; watermark sketches **bleeding off left/right edges** |
+| **1 Hero** | Headline top + 3 benefit columns below | Product wordmark, headline, three icon columns with short copy — fill vertical space; optional edge props bleeding off sides |
+| **2 How it works** | 3-step horizontal flow + bottom footer bar | Numbered step cards connected by arrows/dots; footer bar **touching bottom edge** |
+| **3 Benefit** | Headline left + copy right \| two contrasting cards center \| 3 icons bottom | Gray "before" card vs glowing "after" card; sample data strip; connector between cards |
+| **4 Feature depth** | 3 columns: value prop \| UI widget \| comparison card | Left: headline + bullet features. Center: **concrete widget** (picker highlight, class output, copy button). Right: format comparison card. Texture **bleeding off left edge**; footer bar at bottom |
+| **5 Compare/formats** | Headline top + two card panels + controls row + bottom banner | Side-by-side cards with contrasting headers (Tailwind vs CSS); sample class strings; toggle or export callout; decorative elements **bleeding off left/right edges** |
 
-### Slide prompt examples
+### Slide prompt examples (Peel UI)
 
 **Slide 3 — benefit:**
 ```
-[prefix]. Linen texture background to all edges. Headline left "See the difference" + supporting copy right with vertical divider. Two rate comparison cards center: gray Standard ($1,523 total, 7-night grid) vs maroon MMP ($963, savings badge "YOU SAVE $560"). Three icon columns bottom — savings, clarity, trust.
+[prefix]. Charcoal background to all edges. Headline left "Stop rebuilding from screenshots" + supporting copy right. Two cards center: gray sad screenshot with crop handles vs glowing peeled button with Tailwind class pills (px-6, rounded-2xl, bg-pink-500). Three icon columns bottom — speed, accuracy, copy-ready.
 ```
 
 **Slide 4 — feature:**
 ```
-[prefix]. Red fabric drapes off left edge, cream texture fills frame. Three columns: left value prop + feature bullets, center split-stay planner widget (calendar row, corp/standard night blocks, recommendation box), right tier comparison card (MMF vs MMP split, savings footer). Testimonial quote + burgundy footer bar touching bottom edge.
+[prefix]. Cyan glow off left edge, dark charcoal fills frame. Three columns: left value prop + feature bullets, center element picker widget with dashed highlight and className output panel, right Tailwind v4 vs Plain CSS comparison card. Magenta footer bar touching bottom edge.
 ```
 
 **Slide 5 — compare:**
 ```
-[prefix]. Cream background with hotel sketch watermarks bleeding off left/right edges. Headline "See every option" top. Two card tables: Cash rates (sample hotels + $ prices) vs Bonvoy points (CPP values). Sort pill row below. Export-to-Markdown callout. Bottom tagline banner.
+[prefix]. Dark background with code bracket watermarks bleeding off left/right edges. Headline "Your format. Your stack." top. Two card panels: Tailwind v4 (class pills: px-4, rounded-xl, bg-cyan-500) vs Plain CSS (property blocks). Export callout. Bottom tagline banner.
 ```
 
 ### Regenerate one slide
 
 ```bash
 set -a && source .env && set +a && bun .cursor/skills/extension-store-assets/scripts/generate.ts \
-  --config=public/mmp-store-assets/brand.config.json --phase=store --screenshots-only
+  --config=public/_static/copy-ui-icons/brand.config.json --phase=store --screenshots-only
 ```
 
 Edit individual slide prompts in `brand.config.json` before re-running.
